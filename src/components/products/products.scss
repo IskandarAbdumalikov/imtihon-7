@@ -107,6 +107,15 @@
   }
 }
 
+@media (max-width: 700px){
+  .products__categories{
+    overflow-y: scroll;
+    li{
+      text-wrap: nowrap;
+    }
+  }
+}
+
 @media (max-width: 470px) {
   .products__cards {
     &__card {

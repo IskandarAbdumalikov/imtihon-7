@@ -37,7 +37,7 @@ const Header = () => {
           <NavLink to={"/"}>
             <div className="header__top__nav__right__home">
               <img src={home} alt="" />
-              <h3>Home</h3>
+              <h3 >Home</h3>
             </div>
           </NavLink>
           <NavLink to={"/admin"}>

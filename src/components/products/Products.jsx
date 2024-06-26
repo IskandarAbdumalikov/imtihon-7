@@ -28,6 +28,43 @@ const Products = ({ title, haveCategories }) => {
         ))}
       </ul>
       <div className="products__cards">
+        {category
+          ? categoryData?.map((product) => (
+              <div className="products__cards__card">
+                <NavLink>
+                  <img src={product.image} alt="" />
+                </NavLink>
+                <div className="products__cards__card__info">
+                  <h3 className="products__cards__card__info__title">
+                    {product.title}
+                  </h3>
+                  <p>{product.rating.rate}</p>
+                  <div className="products__cards__card__info__price">
+                    <h2>${product.price}</h2>
+                    <p>${product.price.toFixed(2) + 50}</p>
+                    <h3>24% Off</h3>
+                  </div>
+                </div>
+              </div>
+            ))
+          : data?.map((product) => (
+              <div className="products__cards__card">
+                <NavLink>
+                  <img src={product.image} alt="" />
+                </NavLink>
+                <div className="products__cards__card__info">
+                  <h3 className="products__cards__card__info__title">
+                    {product.title}
+                  </h3>
+                  <p>{product.rating.rate}</p>
+                  <div className="products__cards__card__info__price">
+                    <h2>${product.price}</h2>
+                    <p>${product.price.toFixed(2) + 50}</p>
+                    <h3>24% Off</h3>
+                  </div>
+                </div>
+              </div>
+            ))}
         {data?.map((product) => (
           <div className="products__cards__card">
             <NavLink>

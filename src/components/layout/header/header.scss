@@ -140,3 +140,14 @@
     }
   }
 }
+
+@media (max-width:510px) {
+  .header__top__nav__right{
+    padding:  10px;
+    a{
+      h3{
+        display: none !important;
+      }
+    }
+  }
+}
