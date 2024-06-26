@@ -1,0 +1,371 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+#hero {
+  background: url(../../assets/images/hero.svg) no-repeat center/cover fixed;
+  min-height: 650px;
+}
+
+.hero {
+  position: relative;
+  &__left {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    padding-top: 300px;
+    h1 {
+      color: white;
+      font-size: 64px;
+    }
+  }
+  &__right {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: -10%;
+    justify-content: center;
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
+  &__card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    height: 354px;
+    width: 450px;
+    background: white;
+    border-radius: 10px;
+    &__top,
+    &__bottom {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    &__top {
+      h2 {
+        color: #40bfff;
+        font-size: 30px;
+      }
+    }
+    &__bottom {
+      p {
+        text-decoration: line-through;
+        color: #9098b1;
+      }
+      h3 {
+        color: #fb7181;
+      }
+    }
+    img {
+      width: 100%;
+      height: 50%;
+      object-fit: contain;
+    }
+  }
+}
+
+.sneakers {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  &__top {
+    background: #40bfff;
+    &__main {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      &__left,
+      &__right {
+        width: 48%;
+        img {
+          width: 100%;
+        }
+      }
+      &__left {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        color: white;
+        h1 {
+          font-size: 55px;
+        }
+        h3 {
+          font-size: 24px;
+        }
+        .shop__now-btn {
+          span {
+            width: 80%;
+            height: 1px;
+            background: white;
+          }
+        }
+      }
+    }
+  }
+  &__bottom {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 100px;
+    &__card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 20px;
+      height: 300px;
+      img {
+        width: 100px;
+        height: 50%;
+      }
+    }
+  }
+}
+
+.news {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 50px;
+  padding: 100px 0px;
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 75px;
+    &__card {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      height: 100px;
+      img {
+        width: 50%;
+        height: 100%;
+      }
+      &__info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: start;
+        gap: 10px;
+        p {
+          color: #9098b1;
+        }
+        h3 {
+          color: #22262a;
+          font-size: medium;
+        }
+      }
+    }
+  }
+}
+
+.featured {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  text-align: center;
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 75px;
+
+    &__card {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      height: 100px;
+      &__left {
+        width: 50%;
+        height: 100%;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+      &__right {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        text-align: start;
+        width: 50%;
+        height: 100%;
+        &__price {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          justify-content: space-between;
+          h3 {
+            color: #fb7181;
+          }
+        }
+      }
+    }
+  }
+}
+
+.search__form {
+  width: 640px;
+  border: 1px solid #bcddfe;
+  height: 65px;
+  border-radius: 5px;
+  overflow: hidden;
+  background: #40bfff;
+  margin: 0 auto;
+  input {
+    outline: none;
+    border: none;
+    width: 80%;
+    height: 100%;
+    padding: 0px 10px;
+    background: white;
+  }
+  button {
+    flex: 1;
+    background: #40bfff;
+    color: white;
+    border: none;
+    width: 20%;
+    height: 100%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .featured__cards,
+  .news__cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .news__cards {
+    &__card {
+      &__info {
+        h3 {
+          display: -webkit-box;
+          line-clamp: 3;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 3;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1070px) {
+  .sneakers__top__main {
+    display: flex;
+    padding-top: 50px !important;
+    flex-direction: column;
+    &__left,
+    &__right {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 1020px) {
+  
+  .hero__right {
+    bottom: -20%;
+    .hero__card{
+      width: 300px !important;
+      h3{
+        font-size: 15px;
+      }
+      h2{
+        font-size: 17px;
+      }
+    }
+  }
+  .hero__left{
+    width: 100%;
+  }
+  .sneakers{
+    margin-top: -100px !important;
+  }
+}
+
+@media (max-width: 870px) {
+  .news {
+    height: auto !important;
+  }
+
+  .news__cards {
+    grid-template-columns: 1fr;
+    row-gap: 150px;
+    &__card {
+      &__info {
+        h3 {
+          display: -webkit-box;
+          line-clamp: 3;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 3;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+  .hero__right{
+   display: none;
+  }
+}
+
+@media (max-width: 690px) {
+  .search__form {
+    width: 100%;
+  }
+  .sneakers__bottom {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 580px) {
+  .featured__cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 440px) {
+  .sneakers__bottom {
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: start;
+    align-items: start;
+  }
+}
+
+@media (max-width: 350px) {
+  .news__cards {
+    grid-template-columns: 1fr;
+    row-gap: 150px;
+    &__card {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .featured {
+    height: 1000px !important;
+  }
+  .featured__cards {
+    row-gap: 50px;
+    height: 100% !important;
+    align-items: center;
+    justify-content: center;
+    &__card {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 100%;
+    }
+  }
+}
