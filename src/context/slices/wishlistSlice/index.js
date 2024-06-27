@@ -5,20 +5,20 @@ const initialState = {
 };
 
 const wishlistSlice = createSlice({
-  name: "heart",
+  name: "wishlist",
   initialState,
   reducers: {
-    toggleHeart: (state, action) => {
-      let index = state.value.findIndex((i) => i._id === action.payload._id);
+    like: (state, action) => {
+      let index = state.value.findIndex((el) => el.id === action.payload.id);
       if (index < 0) {
         state.value = [...state.value, action.payload];
       } else {
-        state.value = state.value.filter((i) => i._id !== action.payload._id);
+        state.value = state.value.filter((el) => el.id !== action.payload.id);
       }
       localStorage.setItem("wishlist", JSON.stringify(state.value));
     },
   },
 });
 
-export const { addToHeart } = wishlistSlice.actions;
+export const { like } = wishlistSlice.actions;
 export default wishlistSlice.reducer;

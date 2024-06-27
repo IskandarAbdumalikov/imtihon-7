@@ -5,6 +5,8 @@ import Home from "./pages/home/Home";
 import NotFound from "./pages/notFound/NotFound";
 import Auth from "./auth/Auth";
 import Admin from "./pages/admin/Admin";
+import Single from "./pages/single/Single";
+import Wishlist from "./pages/wishlist/Wishlist";
 
 const App = () => {
   return (
@@ -12,6 +14,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="/wishlist" element={<Wishlist/>}/>
+          <Route path="/products/:productId" element={<Single />} />
         </Route>
         <Route path="/" element={<Auth />}>
           <Route path="admin" element={<Admin />} />

@@ -10,9 +10,8 @@ import bar from "../../../assets/icons/bar.svg";
 import { NavLink } from "react-router-dom";
 
 const Header = () => {
-  const [fixHeader, setFixHeader] = useState(false);
   const [showList, setShowList] = useState(false);
-  console.log(fixHeader);
+  const [fixHeader, setFixHeader] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -72,7 +71,7 @@ const Header = () => {
         </div>
       </div>
       <div
-        className={`header__bottom__nav ${
+        className={`header__bottom__nav  ${
           fixHeader ? "fixed__header__bottom__nav" : ""
         }`}
       >
