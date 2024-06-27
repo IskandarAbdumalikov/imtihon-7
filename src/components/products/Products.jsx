@@ -11,12 +11,13 @@ import halfStar from "../../assets/images/halfStar.svg";
 import starRegular from "../../assets/images/starRegular.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { like } from "../../context/slices/wishlistSlice/index";
-import { FaHeart } from "react-icons/fa";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 const Products = ({ title, haveCategories, givenData }) => {
   const [category, setCategory] = useState(null);
   console.log(category);
   const [limit, setLimit] = useState(8);
+  const [showImg, setShowImg] = useState(true);
   let { data: categoriesList } = useGetAllCategoriesQuery();
   let { data: categoryData } = useGetProductByCategoryQuery(category, {
     limit,
@@ -58,20 +59,25 @@ const Products = ({ title, haveCategories, givenData }) => {
         {givenData
           ? givenData?.map((product) => (
               <div className="products__cards__card">
-                <NavLink
-                  className={"products__cards__card__img"}
-                  to={`/products/${product.id}`}
-                >
-                  <img src={product.image} alt="" />
+                <div className={"products__cards__card__img"}>
+                  <NavLink to={`/products/${product.id}`}>
+                    <img src={product.image} alt="" />
+                  </NavLink>
                   <div className="products__img__overlay">
                     <button onClick={() => dispatch(like(product))}>
-                      <FaHeart />
+                      {wishlistData.some((el) => el.id === product.id) ? (
+                        <FaHeart color="crimson" />
+                      ) : (
+                        <FaRegHeart />
+                      )}
                     </button>
                   </div>
-                </NavLink>
+                </div>
                 <div className="products__cards__card__info">
                   <h3 className="products__cards__card__info__title">
-                    {product.title}
+                    <NavLink to={`/products/${product.id}`}>
+                      {product.title}
+                    </NavLink>
                   </h3>
                   <div className="rating">{getRating(product.rating.rate)}</div>
                   <div className="products__cards__card__info__price">
@@ -85,20 +91,25 @@ const Products = ({ title, haveCategories, givenData }) => {
           : category
           ? categoryData?.map((product) => (
               <div className="products__cards__card">
-                <NavLink
-                  className={"products__cards__card__img"}
-                  to={`/products/${product.id}`}
-                >
-                  <img src={product.image} alt="" />
+                <div className={"products__cards__card__img"}>
+                  <NavLink to={`/products/${product.id}`}>
+                    <img src={product.image} alt="" />
+                  </NavLink>
                   <div className="products__img__overlay">
                     <button onClick={() => dispatch(like(product))}>
-                      <FaHeart />
+                      {wishlistData.some((el) => el.id === product.id) ? (
+                        <FaHeart color="crimson" />
+                      ) : (
+                        <FaRegHeart />
+                      )}
                     </button>
                   </div>
-                </NavLink>
+                </div>
                 <div className="products__cards__card__info">
                   <h3 className="products__cards__card__info__title">
-                    {product.title}
+                    <NavLink to={`/products/${product.id}`}>
+                      {product.title}
+                    </NavLink>
                   </h3>
                   <div className="rating">{getRating(product.rating.rate)}</div>
                   <div className="products__cards__card__info__price">
@@ -111,20 +122,26 @@ const Products = ({ title, haveCategories, givenData }) => {
             ))
           : data?.map((product) => (
               <div className="products__cards__card">
-                <NavLink
-                  className={"products__cards__card__img"}
-                  to={`/products/${product.id}`}
-                >
-                  <img src={product.image} alt="" />
+                <div className={"products__cards__card__img"}>
+                  <NavLink to={`/products/${product.id}`}>
+                    <img src={product.image} alt="" />
+                  </NavLink>
                   <div className="products__img__overlay">
                     <button onClick={() => dispatch(like(product))}>
-                      <FaHeart />
+                      {wishlistData.some((el) => el.id === product.id) ? (
+                        <FaHeart color="crimson" />
+                      ) : (
+                        <FaRegHeart />
+                      )}
                     </button>
                   </div>
-                </NavLink>
+                </div>
+
                 <div className="products__cards__card__info">
                   <h3 className="products__cards__card__info__title">
-                    {product.title}
+                    <NavLink to={`/products/${product.id}`}>
+                      {product.title}
+                    </NavLink>
                   </h3>
                   <div>{getRating(product.rating.rate)}</div>
                   <div className="products__cards__card__info__price">
