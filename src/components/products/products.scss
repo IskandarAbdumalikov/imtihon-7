@@ -54,6 +54,14 @@
           -webkit-line-clamp: 2;
           overflow: hidden;
         }
+        .rating{
+          display: flex;
+          align-items: center;
+          gap: 50px;
+          img{
+            width: 20px;
+          }
+        }
         &__price {
           display: flex;
           align-items: center;
