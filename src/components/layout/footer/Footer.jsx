@@ -13,7 +13,7 @@ const Footer = () => {
     <footer>
       <div className="footer__top container">
         <ul>
-          <img src={logo} alt="" />
+          <img width={130} src={logo} alt="" />
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text

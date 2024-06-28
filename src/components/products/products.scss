@@ -1,3 +1,7 @@
+.loading {
+  margin-top: 300px !important;
+}
+
 .products {
   padding-top: 300px !important;
   display: flex;
@@ -95,6 +99,35 @@
   }
 }
 
+.loading {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 50px;
+  &__card {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    border-radius: 5px;
+    .loading__img,
+    .loading__info {
+      width: 100%;
+      height: 50%;
+      padding: 10px;
+      border-radius: 10px;
+    }
+    .loading__info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .loading__desc {
+      height: 30px;
+      width: 100%;
+      border-radius: 5px;
+    }
+  }
+}
+
 .products__cards__card__img {
   height: 50%;
   position: relative;
@@ -112,7 +145,7 @@
     transition: 0.3s;
     transform: translate(-100%);
     opacity: 0;
-    button{
+    button {
       width: 30px;
       color: #40bfff;
       height: 30px;

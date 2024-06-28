@@ -236,3 +236,37 @@ body {
     }
   }
 }
+
+.single__loading {
+  display: flex;
+  justify-content: space-between;
+  min-height: 600px;
+  width: 100%;
+  padding: 30px 0px;
+  &__left,
+  &__right {
+    width: 48%;
+    min-height: 600px;
+    border-radius: 20px;
+  }
+  &__right {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    &__item {
+      height: 50px;
+      border-radius: 10px;
+    }
+  }
+}
+
+@media (max-width: 830px) {
+  .single__loading {
+    flex-direction: column;
+    gap: 50px;
+    &__left,
+    &__right {
+      width: 100%;
+    }
+  }
+}
