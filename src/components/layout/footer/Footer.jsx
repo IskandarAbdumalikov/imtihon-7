@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import "./footer.scss";
 import logo from "../../../assets/icons/logo.svg";
 import twitter from "../../../assets/icons/twitter.svg";
@@ -75,4 +75,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default memo(Footer);

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import "./header.scss";
 import account from "../../../assets/icons/account.svg";
 import heart from "../../../assets/icons/heart.svg";
@@ -30,8 +30,8 @@ const Header = () => {
   }, []);
 
   return (
-    <header className={`container header ${fixHeader ? "fixed" : ""}`}>
-      <div className="header__top__nav">
+    <header className={`header ${fixHeader ? "fixed" : ""}`}>
+      <div className="header__top__nav container ">
         <div className="header__top__nav__left">
           <select name="lang" id="">
             <option value="EN">EN</option>
@@ -44,26 +44,30 @@ const Header = () => {
           </select>
         </div>
         <div className="header__top__nav__right">
-          <NavLink to={"/"}>
+          <NavLink onClick={() => setShowList(false)} to={"/"}>
             <div className="header__top__nav__right__home">
               <img src={home} alt="Home" />
               <h3>Home</h3>
             </div>
           </NavLink>
-          <NavLink to={"/admin"}>
+          <NavLink onClick={() => setShowList(false)} to={"/admin"}>
             <img src={account} alt="Account" />
             <h3>Account</h3>
           </NavLink>
-          <NavLink className="Wishlist" to={"/wishlist"}>
+          <NavLink
+            onClick={() => setShowList(false)}
+            className="Wishlist"
+            to={"/wishlist"}
+          >
             <img src={heart} alt="Wishlist" />
             <h3>Wishlist</h3>
           </NavLink>
-          <NavLink to={"/cart"}>
+          <NavLink onClick={() => setShowList(false)} to={"/cart"}>
             <img src={cart} alt="Cart" />
             <h3>Cart</h3>
           </NavLink>
           <a className="items">Items</a>
-          <NavLink to={"/explore"}>
+          <NavLink onClick={() => setShowList(false)} to={"/explore"}>
             <p>$0.00</p>
             <img src={search} alt="Explore" />
             <h3>Explore</h3>
@@ -75,33 +79,49 @@ const Header = () => {
           fixHeader ? "fixed__header__bottom__nav" : ""
         }`}
       >
-        <NavLink to={"/"} className="header__bottom__nav__logo">
-          <img src={logo} alt="Logo" />
-        </NavLink>
-        <ul
-          className={`header__bottom__nav__list ${
-            showList ? "show__list" : ""
-          }`}
-        >
-          <NavLink to={"/"}>HOME</NavLink>
-          <NavLink to={"/bags"}>BAGS</NavLink>
-          <NavLink to={"/sneaker"}>SNEAKERS</NavLink>
-          <NavLink to={"/belt"}>BELT</NavLink>
-          <NavLink to={"/contact"}>CONTACT</NavLink>
-        </ul>
-        {showList && (
-          <div onClick={() => setShowList(false)} className="overlay"></div>
-        )}
-        <img
-          onClick={() => setShowList(true)}
-          className="bar"
-          width={20}
-          src={bar}
-          alt="Menu"
-        />
+        <div className="container header__bottom">
+          <NavLink
+            onClick={() => setShowList(false)}
+            to={"/"}
+            className="header__bottom__nav__logo"
+          >
+            <img src={logo} alt="Logo" />
+          </NavLink>
+          <ul
+            className={`header__bottom__nav__list ${
+              showList ? "show__list" : ""
+            }`}
+          >
+            <NavLink onClick={() => setShowList(false)} to={"/"}>
+              HOME
+            </NavLink>
+            <NavLink onClick={() => setShowList(false)} to={"/bags"}>
+              BAGS
+            </NavLink>
+            <NavLink onClick={() => setShowList(false)} to={"/sneaker"}>
+              SNEAKERS
+            </NavLink>
+            <NavLink onClick={() => setShowList(false)} to={"/belt"}>
+              BELT
+            </NavLink>
+            <NavLink onClick={() => setShowList(false)} to={"/contact"}>
+              CONTACT
+            </NavLink>
+          </ul>
+          {showList && (
+            <div onClick={() => setShowList(false)} className="overlay"></div>
+          )}
+          <img
+            onClick={() => setShowList(true)}
+            className="bar"
+            width={20}
+            src={bar}
+            alt="Menu"
+          />
+        </div>
       </div>
     </header>
   );
 };
 
-export default Header;
+export default memo(Header);

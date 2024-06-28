@@ -1,0 +1,137 @@
+.payment {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 900px;
+  padding: 50px;
+  border-radius: 10px;
+  background: white;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0px;
+
+    img {
+      width: 25px;
+      font-size: 25px;
+      cursor: pointer;
+    }
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 50px;
+    &__header {
+      color: #40bfff;
+    }
+    &__body {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 50px;
+      input {
+        border: none;
+        background: #dfdede;
+        height: 50px;
+        width: 100%;
+        outline: none;
+        padding: 10px 20px;
+        border-radius: 10px;
+      }
+      .address {
+        border: none;
+        background: #dfdede;
+        width: 100%;
+        outline: none;
+        padding: 10px 20px;
+        border-radius: 10px;
+        height: 120px !important;
+        resize: none;
+      }
+    }
+    &__footer {
+      button {
+        width: 300px;
+        height: 60px;
+        background: #40bfff;
+        border: 1px solid #40bfff;
+        border-radius: 10px;
+        color: white;
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+.payment__method {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  text-align: start;
+  h3 {
+    color: #40bfff;
+  }
+  &-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    text-align: start;
+    padding: 10px 10px;
+    cursor: pointer;
+    transition: 0.2s;
+    &:hover {
+      background: #ebf0ff;
+    }
+    p {
+      text-wrap: nowrap;
+    }
+    input {
+      height: 20px;
+      width: 20px;
+    }
+  }
+}
+
+@media (max-width: 970px) {
+  .payment {
+    width: 90%;
+  }
+}
+
+@media (max-width: 700px) {
+  .payment {
+    height: 90%;
+    padding: 20px;
+    &__header {
+      padding: 10px 0px;
+    }
+    &__method {
+      gap: 10px;
+      &-card {
+        input {
+          width: 20px !important;
+        }
+        padding: 5px;
+      }
+    }
+    button {
+      width: 200px;
+      height: 40px;
+    }
+  }
+  .payment__form__body {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    input {
+      width: 100%;
+      height: 40px;
+    }
+    textarea {
+      height: 100px;
+    }
+  }
+}

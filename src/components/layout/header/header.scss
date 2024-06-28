@@ -30,6 +30,12 @@
       }
     }
   }
+  .header__bottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+  }
   &__bottom__nav {
     display: flex;
     align-items: center;
@@ -52,7 +58,6 @@
     left: 0;
     right: 0;
     width: 100%;
-    padding: 0px 12%;
     box-shadow: 0px 0px 5px gray;
     z-index: 999;
   }

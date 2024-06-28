@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,memo } from "react";
 import "./products.scss";
 import { useGetAllCategoriesQuery } from "../../context/api/categoryApi";
 import {
@@ -11,11 +11,11 @@ import halfStar from "../../assets/images/halfStar.svg";
 import starRegular from "../../assets/images/starRegular.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { like } from "../../context/slices/wishlistSlice/index";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { FaCartPlus, FaHeart, FaRegHeart } from "react-icons/fa";
+import { addToCart } from "../../context/slices/cartSlice";
 
 const Products = ({ title, haveCategories, givenData }) => {
   const [category, setCategory] = useState(null);
-  console.log(category);
   const [limit, setLimit] = useState(8);
   const [showImg, setShowImg] = useState(true);
   let { data: categoriesList } = useGetAllCategoriesQuery();
@@ -25,7 +25,9 @@ const Products = ({ title, haveCategories, givenData }) => {
 
   const dispatch = useDispatch();
   const wishlistData = useSelector((state) => state.wishlist.value);
-  console.log(wishlistData);
+  const cartData = useSelector((state) => state.cart.value);
+  
+  console.log(cartData);
   const getRating = (rating) => {
     let res = [];
     for (let i = 0; i < Math.trunc(rating); i++) {
@@ -71,6 +73,9 @@ const Products = ({ title, haveCategories, givenData }) => {
                         <FaRegHeart />
                       )}
                     </button>
+                    <button onClick={()=>dispatch(addToCart(product))}>
+                      <FaCartPlus />
+                    </button>
                   </div>
                 </div>
                 <div className="products__cards__card__info">
@@ -103,6 +108,9 @@ const Products = ({ title, haveCategories, givenData }) => {
                         <FaRegHeart />
                       )}
                     </button>
+                    <button onClick={()=>dispatch(addToCart(product))}>
+                      <FaCartPlus />
+                    </button>
                   </div>
                 </div>
                 <div className="products__cards__card__info">
@@ -134,6 +142,9 @@ const Products = ({ title, haveCategories, givenData }) => {
                         <FaRegHeart />
                       )}
                     </button>
+                    <button onClick={()=>dispatch(addToCart(product))}>
+                      <FaCartPlus />
+                    </button>
                   </div>
                 </div>
 
@@ -160,4 +171,4 @@ const Products = ({ title, haveCategories, givenData }) => {
   );
 };
 
-export default Products;
+export default memo(Products);

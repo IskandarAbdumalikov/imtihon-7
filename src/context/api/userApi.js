@@ -9,9 +9,9 @@ export const userApi = api.injectEndpoints({
       }),
       providesTags: ["User"],
     }),
-    signIn: build.mutation({
+    loginUser: build.mutation({
       query: (body) => ({
-        url: "/auth/sign-in",
+        url: "/auth/login",
         method: "POST",
         body,
       }),
@@ -28,5 +28,5 @@ export const userApi = api.injectEndpoints({
   }),
 });
 
-export const { useGetUsersQuery, useRegisterUserMutation, useSignInMutation } =
+export const { useGetUsersQuery, useRegisterUserMutation, useLoginUserMutation } =
   userApi;

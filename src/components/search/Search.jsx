@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 const Search = () => {
   return (
@@ -9,4 +9,4 @@ const Search = () => {
   )
 }
 
-export default Search
+export default memo(Search);

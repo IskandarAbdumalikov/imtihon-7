@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import "./home.scss";
 import { useGetProductsQuery } from "../../context/api/productApi";
 import Products from "../../components/products/Products";
@@ -146,4 +146,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default memo(Home);

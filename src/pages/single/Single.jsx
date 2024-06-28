@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import "./single.scss";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {
   useGetProductByIdQuery,
   useGetProductsQuery,
@@ -105,7 +105,14 @@ const Single = () => {
           {productsData?.slice(0, 4).map((product) => (
             <SwiperSlide key={product.id}>
               <div className="mySwiper single__page__header__right__card">
-                <img width={50} className="image" src={product.image} alt="" />
+                <Link to={`/products/${product.id}`}>
+                  <img
+                    width={50}
+                    className="image"
+                    src={product.image}
+                    alt=""
+                  />
+                </Link>
                 <div className="mySwiper single__page__header__right__card__info">
                   <div className="rating">{getRating(product.rating.rate)}</div>
                   <div className="prices">
@@ -209,4 +216,4 @@ const Single = () => {
   );
 };
 
-export default Single;
+export default memo(Single);

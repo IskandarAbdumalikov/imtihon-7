@@ -1,18 +1,14 @@
-import React from "react";
-import Header from "./header/Header";
+import React, { memo } from "react";
 import { Outlet } from "react-router-dom";
-import Footer from "./footer/Footer";
 
 const Layout = () => {
   return (
     <>
-      <Header />
       <main>
         <Outlet />
       </main>
-      <Footer />
     </>
   );
 };
 
-export default Layout;
+export default memo(Layout);
