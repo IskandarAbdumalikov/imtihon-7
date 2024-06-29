@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./cart.scss";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -16,6 +16,9 @@ const Cart = () => {
   const dispatch = useDispatch();
   const cartData = useSelector((state) => state.cart.value);
   const [showModule, setShowModule] = useState(false);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [cartData]);
 
   const calculatePrice = () => {
     const total = cartData.reduce((sum, el) => sum + el.quantity * el.price, 0);
@@ -105,9 +108,10 @@ const Cart = () => {
         <>
           <Payment
             data={cartData}
+            dispatch={dispatch}
             calculatePrice={calculatePrice}
             setShowModule={setShowModule}
-            deleteAllCart={() => dispatch(deleteAllCart())}
+            deleteAllCart={deleteAllCart}
           />
           <div onClick={() => setShowModule(false)} className="overlay"></div>
         </>

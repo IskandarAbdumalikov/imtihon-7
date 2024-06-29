@@ -163,14 +163,14 @@
 }
 
 @media (max-width: 1150px) {
-  .products__cards {
+  .products__cards,.loading {
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
   }
 }
 
 @media (max-width: 820px) {
-  .products__cards {
+  .products__cards,.loading {
     &__card {
       &__info {
         h2 {
@@ -193,7 +193,7 @@
 }
 
 @media (max-width: 750px) {
-  .products__cards {
+  .products__cards,.loading {
     &__card {
       &__info {
         &__price {
@@ -222,7 +222,7 @@
       font-size: 13px;
     }
   }
-  .products__cards {
+  .products__cards,.loading {
     grid-template-columns: repeat(2, 1fr);
     &__card {
       &__info {
@@ -247,7 +247,7 @@
 }
 
 @media (max-width: 530px) {
-  .products__cards {
+  .products__cards,.loading {
     gap: 20px;
     &__card {
       &__info {
@@ -271,7 +271,7 @@
 }
 
 @media (max-width: 530px) {
-  .products__cards {
+  .products__cards,.loading {
     grid-template-columns: 1fr;
     &__card {
       &__info {

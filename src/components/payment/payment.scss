@@ -104,8 +104,12 @@
 
 @media (max-width: 700px) {
   .payment {
+    height: 600px !important;
     &__form{
       gap: 20px;
+    }
+    .address{
+      height: 70px !important;
     }
     height: 90%;
     padding: 20px;

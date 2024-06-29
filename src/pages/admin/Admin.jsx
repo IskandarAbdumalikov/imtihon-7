@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useEffect } from "react";
 import "./admin.scss";
 import { useDispatch } from "react-redux";
 import { logout } from "../../context/slices/authSlice";
@@ -8,6 +8,9 @@ const Admin = () => {
   let dispatch = useDispatch();
   let { data } = useGetUsersQuery();
   console.log(data);
+   useEffect(() => {
+     window.scrollTo(0, 0);
+   }, [data]);
 
   return (
     <div className="admin container">

@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import "./contact.scss";
 import Search from "../../components/search/Search";
 import { useGetValue } from "../../hooks/useGetValue";
@@ -25,6 +25,10 @@ const Contact = () => {
     api.send();
     setFormData(initialState);
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="contact__wrapper">

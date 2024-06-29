@@ -20,13 +20,24 @@ const initialState = {
 const BOT_TOKEN = "7177289161:AAHsDSL97FVQ4fn-YiMr9oWa9udUems4nvU";
 const CHAT_ID = "-1002243961126";
 
-const Payment = ({ setShowModule, deleteAllCart, calculatePrice, data }) => {
+const Payment = ({
+  setShowModule,
+  deleteAllCart,
+  calculatePrice,
+  data,
+  dispatch,
+}) => {
   const { formData, handleChange, setFormData } = useGetValue(initialState);
+
+  const handleAllCloser = () => {
+    setFormData(initialState);
+    setShowModule(false);
+    dispatch(deleteAllCart());
+  };
 
   const handleCloser = () => {
     setFormData(initialState);
     setShowModule(false);
-    deleteAllCart();
   };
 
   let title = data?.map((el) => el.title);
@@ -45,7 +56,7 @@ const Payment = ({ setShowModule, deleteAllCart, calculatePrice, data }) => {
     let api = new XMLHttpRequest();
     api.open("GET", url, true);
     api.send();
-    handleCloser();
+    handleAllCloser();
   };
 
   return (
