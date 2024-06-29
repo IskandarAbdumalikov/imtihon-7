@@ -104,14 +104,27 @@
 
 @media (max-width: 700px) {
   .payment {
+    &__form{
+      gap: 20px;
+    }
     height: 90%;
     padding: 20px;
     &__header {
       padding: 10px 0px;
     }
     &__method {
+      h3{display: none;}
       gap: 10px;
+      display: flex;
+      flex-direction: row;
       &-card {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: start;
+        p{
+          display: none;
+        }
         input {
           width: 20px !important;
         }
