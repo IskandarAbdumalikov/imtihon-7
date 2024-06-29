@@ -17,15 +17,33 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import { Pagination, Navigation } from "swiper/modules";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, decrementCart } from "../../context/slices/cartSlice";
+import { FaCartPlus, FaHeart, FaRegHeart } from "react-icons/fa";
+import { like } from "../../context/slices/wishlistSlice";
 
 const Single = () => {
   const { productId } = useParams();
+  let [count, setCount] = useState(0);
   let { data, isFetching, isLoading } = useGetProductByIdQuery(productId);
   let { data: productsData } = useGetProductsQuery();
+  const dispatch = useDispatch();
+  const wishlistData = useSelector((state) => state.wishlist.value);
+
+  const cartData = useSelector((state) => state.cart.value);
   let [tab, setTab] = useState(1);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [productId]);
+  const handleDec = () => {
+    dispatch(decrementCart(data));
+    setCount((p) => p - 1);
+  };
+
+  const handleInc = () => {
+    dispatch(addToCart(data));
+    setCount((p) => p + 1);
+  };
 
   const getRating = (rating) => {
     let res = [];
@@ -41,7 +59,6 @@ const Single = () => {
     return res;
   };
 
-  console.log(productId);
   return (
     <>
       {isFetching || isLoading ? (
@@ -60,7 +77,7 @@ const Single = () => {
               <img src={data?.image} alt="" />
             </div>
             <div className="single__page__header__middle">
-              <h2>{data?.title}</h2>
+              <h2 className="title">{data?.title}</h2>
               <div className="single__page__header__middle__rating">
                 <div className="stars">{getRating(data?.rating.rate)}</div>
                 <p>0 reviews</p>
@@ -99,6 +116,31 @@ const Single = () => {
                   <option value="l">L</option>
                   <option value="xl">XL</option>
                 </select>
+              </div>
+              <div className="single__page__header__middle__btns">
+                <div className="cart__counter">
+                  <button disabled={count <= 0} onClick={handleDec}>
+                    -
+                  </button>
+                  <h2>{count}</h2>
+                  <button
+                    disabled={data.rating.count <= count}
+                    onClick={handleInc}
+                  >
+                    +
+                  </button>
+                </div>
+                <button onClick={handleInc} className="add-cart-btn">
+                  <FaCartPlus />
+                  Add to cart
+                </button>
+                <button className="like-btn" onClick={() => dispatch(like(data))}>
+                  {wishlistData.some((el) => el.id === data.id) ? (
+                    <FaHeart color="crimson" />
+                  ) : (
+                    <FaRegHeart />
+                  )}
+                </button>
               </div>
             </div>
 
