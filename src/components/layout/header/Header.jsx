@@ -8,6 +8,7 @@ import logo from "../../../assets/icons/logo.svg";
 import home from "../../../assets/icons/home.svg";
 import bar from "../../../assets/icons/bar.svg";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [showList, setShowList] = useState(false);
@@ -28,6 +29,8 @@ const Header = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  let cartData = useSelector((state) => state.cart.value);
+  let wishlistData = useSelector((state) => state.wishlist.value);
 
   return (
     <header className={`header ${fixHeader ? "fixed" : ""}`}>
@@ -60,10 +63,16 @@ const Header = () => {
             to={"/wishlist"}
           >
             <img src={heart} alt="Wishlist" />
+            <sup>{wishlistData?.length ? wishlistData.length : 0}</sup>
             <h3>Wishlist</h3>
           </NavLink>
-          <NavLink onClick={() => setShowList(false)} to={"/cart"}>
+          <NavLink
+            className={"Cart"}
+            onClick={() => setShowList(false)}
+            to={"/cart"}
+          >
             <img src={cart} alt="Cart" />
+            <sup>{cartData?.length ? cartData.length : 0}</sup>
             <h3>Cart</h3>
           </NavLink>
           <a className="items">Items</a>

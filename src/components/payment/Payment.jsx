@@ -1,5 +1,5 @@
 // Payment.jsx
-import React from "react";
+import React, { memo } from "react";
 import { useGetValue } from "../../hooks/useGetValue";
 import "./payment.scss";
 import creditCard from "../../assets/icons/credit.svg";
@@ -17,10 +17,10 @@ const initialState = {
   paymentType: "",
 };
 
-const BOT_TOKEN = "YOUR_BOT_TOKEN";
-const CHAT_ID = "YOUR_CHAT_ID";
+const BOT_TOKEN = "7177289161:AAHsDSL97FVQ4fn-YiMr9oWa9udUems4nvU";
+const CHAT_ID = "-1002243961126";
 
-const Payment = ({ setShowModule, deleteAllCart }) => {
+const Payment = ({ setShowModule, deleteAllCart, calculatePrice, data }) => {
   const { formData, handleChange, setFormData } = useGetValue(initialState);
 
   const handleCloser = () => {
@@ -28,6 +28,8 @@ const Payment = ({ setShowModule, deleteAllCart }) => {
     setShowModule(false);
     deleteAllCart();
   };
+
+  let title = data?.map((el) => el.title);
 
   const handleSendMessage = (e) => {
     e.preventDefault();
@@ -38,6 +40,7 @@ const Payment = ({ setShowModule, deleteAllCart }) => {
     text += `Address: ${formData.address} %0A`;
     text += `Phone: ${formData.phone} %0A`;
     text += `Type of payment: ${formData.paymentType} %0A`;
+    text += `Total: $${calculatePrice()} %0A`;
     let url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${text}`;
     let api = new XMLHttpRequest();
     api.open("GET", url, true);
@@ -138,4 +141,4 @@ const Payment = ({ setShowModule, deleteAllCart }) => {
   );
 };
 
-export default Payment;
+export default memo(Payment);

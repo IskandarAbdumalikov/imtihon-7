@@ -36,7 +36,6 @@ const Products = ({ title, haveCategories, givenData }) => {
   const wishlistData = useSelector((state) => state.wishlist.value);
   const cartData = useSelector((state) => state.cart.value);
 
-  console.log(cartData);
   const getRating = (rating) => {
     let res = [];
     for (let i = 0; i < Math.trunc(rating); i++) {

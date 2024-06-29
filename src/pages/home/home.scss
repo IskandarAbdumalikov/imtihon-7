@@ -25,10 +25,13 @@
     display: flex;
     align-items: center;
     position: absolute;
-    bottom: -10%;
     justify-content: center;
+    transform: translateY(25%);
     width: 100%;
     left: 0;
+    gap: 15px;
+    padding: 0px 16px;
+
     right: 0;
   }
   &__card {
@@ -269,23 +272,21 @@
 }
 
 @media (max-width: 1020px) {
-  
   .hero__right {
-    bottom: -20%;
-    .hero__card{
+    .hero__card {
       width: 300px !important;
-      h3{
+      h3 {
         font-size: 15px;
       }
-      h2{
+      h2 {
         font-size: 17px;
       }
     }
   }
-  .hero__left{
+  .hero__left {
     width: 100%;
   }
-  .sneakers{
+  .sneakers {
     margin-top: -100px !important;
   }
 }
@@ -310,9 +311,31 @@
       }
     }
   }
-  .hero__right{
-   display: none;
+  .hero__right {
+    margin-bottom: -50px;
+    .hero__card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      &__top {
+        h3 {
+          display: -webkit-box;
+          line-clamp: 2;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          overflow: hidden;
+        }
+      }
+      img {
+        height: 50%;
+      }
+    }
   }
+}
+
+.hero__card:hover {
+  transition: 0.3s;
+  background: #e3e3e3;
 }
 
 @media (max-width: 690px) {
@@ -329,6 +352,26 @@
   .featured__cards {
     grid-template-columns: 1fr;
   }
+  .hero__right {
+    padding: 0px 8px;
+  }
+  .hero__card {
+    height: 200px;
+    img {
+      height: 50%;
+    }
+  }
+}
+
+@media (max-width: 540px) {
+  .hero__right {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    .hero__card {
+      width: 190px !important;
+    }
+  }
 }
 
 @media (max-width: 440px) {
@@ -337,6 +380,27 @@
     grid-template-columns: 1fr;
     text-align: start;
     align-items: start;
+  }
+  .hero__right {
+    gap: 10px;
+    .hero__card {
+      width: 160px !important;
+      h3 {
+        font-size: 14px !important;
+      }
+      h2 {
+        font-size: 15px !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 380px) {
+  .hero__right {
+    display: none;
+  }
+  .hero{
+    height: 800px;
   }
 }
 

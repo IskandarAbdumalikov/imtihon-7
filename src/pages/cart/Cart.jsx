@@ -104,6 +104,8 @@ const Cart = () => {
       {showModule && (
         <>
           <Payment
+            data={cartData}
+            calculatePrice={calculatePrice}
             setShowModule={setShowModule}
             deleteAllCart={() => dispatch(deleteAllCart())}
           />
